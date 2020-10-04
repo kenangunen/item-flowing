@@ -1,10 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import TextFlow from './components/text-flow';
+import ItemsFlowing from './items-flowing/items-flowing';
 
 function App() {
-  const flowList = ['Ankara', 'İstanbul', 'Samsun', 'İzmir', 'Mersin'];
+  const flowItems = ['Ankara', 'İstanbul', 'Samsun', 'İzmir', 'Mersin'];
   return (
     <div className='App'>
       <header className='App-header'>
@@ -20,7 +20,13 @@ function App() {
         >
           Learn React
         </a>
-        <TextFlow flowList={flowList} changetime={2000}></TextFlow>
+        <ItemsFlowing
+          className='flow'
+          flowItems={flowItems}
+          changedTime={1000}
+          topTime={10000}
+          loop={true}
+        ></ItemsFlowing>
       </header>
     </div>
   );
