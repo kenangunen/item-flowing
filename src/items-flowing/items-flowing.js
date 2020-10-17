@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-const ItemsFlowing = (props) => {
+const ItemFlowing = (props) => {
   const { flowItems, changedTime, topTime, className, loop } = props;
   const [newFlowList, setFlowList] = useState([]);
   const target = useRef();
@@ -25,7 +25,9 @@ const ItemsFlowing = (props) => {
           console.log("topTime value can't be smaller than changedTime value!");
         }
       } else {
-        console.log('Hem topTime hem cnagedTime props olarak gönderilmeli.');
+        console.log(
+          'Must be sent as both topTime and cnagedTime values props.'
+        );
       }
     } else {
       if (topTime !== undefined && changedTime !== undefined) {
@@ -69,9 +71,9 @@ const ItemsFlowing = (props) => {
   );
 };
 
-export default ItemsFlowing;
+export default ItemFlowing;
 
-ItemsFlowing.propTypes = {
+ItemFlowing.propTypes = {
   flowItems: PropTypes.array.isRequired,
   changedTime: PropTypes.number,
   topTime: PropTypes.number,
@@ -79,6 +81,6 @@ ItemsFlowing.propTypes = {
   loop: PropTypes.bool,
 };
 
-ItemsFlowing.defaultProps = {
+ItemFlowing.defaultProps = {
   flowItems: ['flowItems prop is empty !'],
 };
