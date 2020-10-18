@@ -1,68 +1,78 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Item Flowing
 
-## Available Scripts
+Allows items to change depending on time.
 
-In the project directory, you can run:
+- You can determine how long the items will change.
+- You can determine the total duration of the change process.
+- You can make the items change within the loop within the specified time.
 
-### `yarn start`
+## Demo
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![asdasd](https://raw.githubusercontent.com/kenangunen/item-flowing/master/src/gif/city.gif)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![asdasd](https://raw.githubusercontent.com/kenangunen/item-flowing/master/src/gif/counter.gif)
 
-### `yarn test`
+![asdasd](https://raw.githubusercontent.com/kenangunen/item-flowing/master/src/gif/loading.gif)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation & Usage
 
-### `yarn build`
+```bash
+npm install item-flowing
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Include the Component
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- First you need to import the package.
+- The component has 4 props.
+  - `flowItems :` An array of numbers or texts to flow. (**It must be array**)
+  - `changedTime :` Change times of items. (**It must be integer / 1s=1000**)
+  - `topTime :` The time period when all items will change. The longer the time, the slower the change speed of the items. (**It must be integer / 1s=1000**)\*\*
+  - `loop :` If you want to use `topTime` and `changedTime` together, the `loop` must be **true**. The **true** of the loop allows the items to change at the desired time within a certain time period. And it does this in a loop. That's why `changedTime` can't be bigger than `topTime`. (**It must be bloen.**)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+import React from 'react'
+import ItemsFlowing from 'item-flowing';
 
-### `yarn eject`
+function App() {
+  const flowArray = ['Paris', 'Doha', 'Amsterdam', 'Venice', 'Kyoto'];
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+_Allows `flowArray` items to change 1 per second._
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+     return (
+      <ItemsFlowing
+          flowItems={flowArray}
+          changedTime={1000}  #1s
+        />
+  );
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+_Allows all `flowArray` items to change within 20 seconds._
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+return (
+      <ItemsFlowing
+          flowItems={flowArray}
+          topTime={20000} #20s
+        />
+  );
+```
 
-## Learn More
+_Allows `flowArray` items to change every .5 seconds. And it does this in a loop for 60 seconds_
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+return (
+      <ItemsFlowing
+          flowItems={flowArray}
+          changedTime={500} #0.5s
+          topTime={60000} #1m
+          loop={true}
+        />
+  );
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Version 1.0.0
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+In this version, only texts and numbers are flowing in time.
