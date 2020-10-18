@@ -1,32 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import ItemsFlowing from './items-flowing/items-flowing';
+import ItemFlowing from './item-flowing/item-flowing';
 
 function App() {
-  const flowItems = ['Ankara', 'İstanbul', 'Samsun', 'İzmir', 'Mersin'];
+  const flowItems = ['New York', 'London', 'Paris', 'Moscow', 'Tokyo'];
   return (
     <div className='App'>
       <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-        <ItemsFlowing
-          className='flow'
+        <ItemFlowing         
           flowItems={flowItems}
           changedTime={1000}
           topTime={10000}
           loop={true}
-        ></ItemsFlowing>
+        />
       </header>
     </div>
   );
