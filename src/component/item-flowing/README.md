@@ -49,7 +49,7 @@ function App() {
 _Allows `flowArray` items to change 1 per second._
 
 ```bash
-return (
+     return (
       <ItemFlowing
           flowItems={flowArray}
           changedTime={1000}  #1s

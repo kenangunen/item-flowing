@@ -82,5 +82,6 @@ ItemFlowing.propTypes = {
 };
 
 ItemFlowing.defaultProps = {
-  flowItems: ['flowItems prop is empty !'],
+  loop: true,
+  changedTime: 1000,
 };
